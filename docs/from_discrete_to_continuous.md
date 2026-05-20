@@ -9,7 +9,6 @@ The Itô / PDE derivation is given in [Appendix A](#appendix-a-the-ito-derivatio
 ---
 
 ## 1. Probabilistic framework of the CRR model
-
 Fix a maturity $T > 0$ and partition $[0,T]$ into $n$ steps of length $\Delta t = T/n$. We work on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ carrying an i.i.d. sequence $(\xi_k)_{k=1,\ldots,n}$ taking values in $\{u, d\}$, with
 
 $$u = e^{\sigma \sqrt{\Delta t}}, \qquad d = e^{-\sigma \sqrt{\Delta t}} = 1/u, \qquad R = e^{r \Delta t},$$
@@ -22,31 +21,40 @@ $$S_0 \text{ given}, \qquad S_{k+1} = S_k \cdot \xi_{k+1}, \qquad k = 0, \ldots,
 
 and we equip $\Omega$ with the natural filtration
 
-$$\mathcal{F}_k = \sigma(\xi_1, \ldots, \xi_k) = \sigma(S_1, \ldots, S_k), \qquad \mathcal{F}_0 = \{\emptyset, \Omega\}.$$
+$$\mathcal{F}_{k} = \sigma(\xi_1, \ldots, \xi_k) = \sigma(S_1, \ldots, S_k), \qquad \mathcal{F}_{0} = \{\emptyset, \Omega\}.$$
 
-In particular, $S_k$ is $\mathcal{F}_k$-measurable, while $\xi_{k+1}$ is independent of $\mathcal{F}_k$.
+In particular, $S_{k}$ is $\mathcal{F}_{k}$-measurable, while $\xi_{k+1}$ is independent of $\mathcal{F}_{k}$.
 
 ### Construction of the risk-neutral measure
 
-We seek an equivalent probability measure $\mathbb{Q} \sim \mathbb{P}$ under which the discounted price $\widetilde{S}_k = R^{-k} S_k$ is a $(\mathcal{F}_k)$-martingale, and under which the $(\xi_k)$ remain i.i.d. with $\mathbb{Q}(\xi_k = u) = q \in (0,1)$.
+We seek an equivalent probability measure $\mathbb{Q} \sim \mathbb{P}$ under which the discounted price $\widetilde{S}_{k} = R^{-k} S_{k}$ is a $(\mathcal{F}_{k})$-martingale, and under which the $(\xi_k)$ remain i.i.d. with $\mathbb{Q}(\xi_k = u) = q \in (0,1)$.
 
-The martingale condition $\mathbb{E}^{\mathbb{Q}}[\widetilde{S}_{k+1} \mid \mathcal{F}_k] = \widetilde{S}_k$ rewrites, after multiplication by $R^{k+1}$, as $\mathbb{E}^{\mathbb{Q}}[S_{k+1} \mid \mathcal{F}_k] = R \cdot S_k$. Using the $\mathcal{F}_k$-measurability of $S_k$ (which factors out of the conditional expectation) and the independence of $\xi_{k+1}$ from $\mathcal{F}_k$ (which collapses the conditional expectation into a plain one):
+The martingale condition
 
-$$\mathbb{E}^{\mathbb{Q}}[S_{k+1} \mid \mathcal{F}_k] \;=\; S_k \cdot \mathbb{E}^{\mathbb{Q}}[\xi_{k+1}] \;=\; S_k \cdot \big(q u + (1-q) d\big).$$
+$$\mathbb{E}^{\mathbb{Q}}[\widetilde{S}_{k+1} \mid \mathcal{F}_{k}] = \widetilde{S}_{k}$$
+
+rewrites, after multiplication by $R^{k+1}$, as
+
+$$\mathbb{E}^{\mathbb{Q}}[S_{k+1} \mid \mathcal{F}_{k}] = R \cdot S_{k}.$$
+
+Using the $\mathcal{F}_{k}$-measurability of $S_{k}$ (which factors out of the conditional expectation) and the independence of $\xi_{k+1}$ from $\mathcal{F}_{k}$ (which collapses the conditional expectation into a plain one):
+
+$$\mathbb{E}^{\mathbb{Q}}[S_{k+1} \mid \mathcal{F}_{k}] = S_{k} \cdot \mathbb{E}^{\mathbb{Q}}[\xi_{k+1}] = S_{k} \cdot \big(q u + (1-q) d\big).$$
 
 The martingale condition is therefore equivalent to $qu + (1-q)d = R$, which yields
 
-$$\boxed{\;q = \frac{R - d}{u - d}\;}$$
+$$q = \frac{R - d}{u - d}.$$
 
 The arbitrage-free condition $d < R < u$ ensures $q \in (0,1)$, so $\mathbb{Q}$ is indeed an equivalent probability measure. Its uniqueness follows from the fact that the condition above determines $q$ uniquely: the CRR market is **complete**.
 
-> **Remark.** Here we assume that $\mathbb{Q}$ does exist due to the no arbitrage assumption, as in discrete time. The continuous-time analogue of this result: the Fundamental Theorem of Asset Pricing is significantly more delicate. The rigorous version (Delbaen-Schachermayer, 1994) establishes the equivalence between *No Free Lunch with Vanishing Risk* (NFLVR) and the existence of an equivalent local-martingale measure. 
+> **Remark.** Here we assume that $\mathbb{Q}$ exists due to the no-arbitrage assumption, as in discrete time. The continuous-time analogue of this result, the Fundamental Theorem of Asset Pricing, is significantly more delicate. The rigorous version (Delbaen-Schachermayer, 1994) establishes the equivalence between *No Free Lunch with Vanishing Risk* (NFLVR) and the existence of an equivalent local-martingale measure.
 
 ### Pricing a European claim
 
 For a claim with payoff $h(S_n)$ at maturity, the no-arbitrage price at time $0$ is
 
-$$V_0 = R^{-n} \, \mathbb{E}^{\mathbb{Q}}[h(S_n)] = e^{-rT} \, \mathbb{E}^{\mathbb{Q}}[h(S_n)].$$
+$$V_0 = R^{-n} \, \mathbb{E}^{\mathbb{Q}}[h(S_n)] = e^{-rT} \, \mathbb{E}^{\mathbb{Q}}[h(S_n)],$$
+
 by backward induction on the one-step pricing relation and the tower property of conditional expectations.
 
 This is the formula we will study in the limit $n \to \infty$.
@@ -110,9 +118,9 @@ $$\operatorname{Var}^{\mathbb{Q}}(Z_k) = 1 - (2q - 1)^2 = 4q(1-q) = 1 + O(\Delta
 
 By linearity of expectation and independence of the $(Z_k)$:
 
-$$\mathbb{E}^{\mathbb{Q}}[\widetilde{Z}_n] = \sqrt{n}\cdot\mathbb{E}^{\mathbb{Q}}[Z_1] = \sqrt{n\,\Delta t}\cdot\frac{r - \sigma^2/2}{\sigma} + O(\sqrt{n}\,\Delta t) \;\xrightarrow[n \to \infty]{}\; \frac{\sqrt{T}\,(r - \sigma^2/2)}{\sigma},$$
+$$\mathbb{E}^{\mathbb{Q}}[\widetilde{Z}_n] = \sqrt{n}\cdot\mathbb{E}^{\mathbb{Q}}[Z_1] = \sqrt{n\,\Delta t}\cdot\frac{r - \sigma^2/2}{\sigma} + O(\sqrt{n}\,\Delta t) \xrightarrow[n \to \infty]{} \frac{\sqrt{T}\,(r - \sigma^2/2)}{\sigma},$$
 
-$$\operatorname{Var}^{\mathbb{Q}}(\widetilde{Z}_n) = \operatorname{Var}^{\mathbb{Q}}(Z_1) \;\xrightarrow[n \to \infty]{}\; 1.$$
+$$\operatorname{Var}^{\mathbb{Q}}(\widetilde{Z}_n) = \operatorname{Var}^{\mathbb{Q}}(Z_1) \xrightarrow[n \to \infty]{} 1.$$
 
 The renormalised sum $\widetilde{Z}_n$ has, in the limit, an explicit non-trivial mean and unit variance — precisely the moments of the Gaussian distribution we expect to recover via a central limit theorem.
 
@@ -128,7 +136,7 @@ The right framework is that of a **triangular array** $\{Z_k^{(n)}\}_{1 \leq k \
 
 Let $\mu_n := \mathbb{E}^{\mathbb{Q}}[Z_k^{(n)}]$ and $s_n^2 := \sum_{k=1}^n \operatorname{Var}^{\mathbb{Q}}(Z_k^{(n)}) = n \cdot \operatorname{Var}^{\mathbb{Q}}(Z_1^{(n)})$. The Lindeberg-Feller theorem requires that for every $\delta > 0$,
 
-$$\frac{1}{s_n^2} \sum_{k=1}^n \mathbb{E}^{\mathbb{Q}}\!\left[ (Z_k^{(n)} - \mu_n)^2 \, \mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n} \right] \;\xrightarrow[n \to \infty]{}\; 0.$$
+$$\frac{1}{s_n^2} \sum_{k=1}^n \mathbb{E}^{\mathbb{Q}}\!\left[ (Z_k^{(n)} - \mu_n)^2 \, \mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n} \right] \xrightarrow[n \to \infty]{} 0.$$
 
 In our case the variables are *uniformly bounded*: $|Z_k^{(n)} - \mu_n| \leq 2$ for all $n, k$. Meanwhile $s_n \sim \sqrt{n} \to \infty$, so for any fixed $\delta > 0$ the indicator $\mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n}$ vanishes identically for $n$ large enough. The Lindeberg condition holds trivially.
 
@@ -137,18 +145,18 @@ In our case the variables are *uniformly bounded*: $|Z_k^{(n)} - \mu_n| \leq 2$ 
 
 Lindeberg-Feller then gives
 
-$$\frac{1}{s_n}\sum_{k=1}^n \big(Z_k^{(n)} - \mu_n\big) \;\xrightarrow[n \to \infty]{(d)}\; \mathcal{N}(0, 1).$$
+$$\frac{1}{s_n}\sum_{k=1}^n \big(Z_k^{(n)} - \mu_n\big) \xrightarrow[n \to \infty]{(d)} \mathcal{N}(0, 1).$$
 
 Since $s_n^2 = n \cdot \operatorname{Var}^{\mathbb{Q}}(Z_1^{(n)}) \to n$, dividing by $\sqrt{n}$ instead of $s_n$ changes nothing in the limit. Combining with the asymptotics of Section 3:
 
-$$\widetilde{Z}_n \;\xrightarrow[n \to \infty]{(d)}\; \frac{\sqrt{T}\,(r - \sigma^2/2)}{\sigma} + \widetilde{Z}, \qquad \widetilde{Z} \sim \mathcal{N}(0, 1).$$
+$$\widetilde{Z}_n \xrightarrow[n \to \infty]{(d)} \frac{\sqrt{T}\,(r - \sigma^2/2)}{\sigma} + \widetilde{Z}, \qquad \widetilde{Z} \sim \mathcal{N}(0, 1).$$
 
 ### Limiting distribution of the log-price
 
 
 Recall that $\log(S_n / S_0) = \sigma\sqrt{T}\cdot \widetilde{Z}_n$. The linear transformation yields, under $\mathbb{Q}$:
 
-$$\log\frac{S_n}{S_0} \;\xrightarrow[n \to \infty]{(d)}\; \mathcal{N}\!\left( \big(r - \tfrac{\sigma^2}{2}\big)\,T,\; \sigma^2 T \right).$$
+$$\log\frac{S_n}{S_0} \xrightarrow[n \to \infty]{(d)} \mathcal{N}\!\left( \big(r - \tfrac{\sigma^2}{2}\big)\,T, \sigma^2 T \right).$$
 
 In the continuous-time limit, the underlying is log-normal under $\mathbb{Q}$ with drift $(r - \sigma^2/2)T$ and variance $\sigma^2 T$ — the parameters of the Black-Scholes log-price distribution.
 
@@ -163,7 +171,7 @@ By the definition of convergence in distribution (the *Portmanteau theorem*), $\
 
 The payoff of the European put, $(K - S_n)^+$, is bounded above by $K$. Writing $S_n = S_0 \exp(\sigma\sqrt{T} \, \widetilde{Z}_n)$, we have $(K - S_n)^+ = f(\widetilde{Z}_n)$ with $f(z) = (K - S_0 e^{\sigma \sqrt{T} z})^+$ continuous and bounded by $K$. Direct application:
 
-$$P_0^{\text{CRR}}(n) = e^{-rT} \mathbb{E}^{\mathbb{Q}}\!\left[(K - S_n)^+\right] \;\xrightarrow[n \to \infty]{}\; e^{-rT} \mathbb{E}^{\mathbb{Q}}\!\left[(K - S_T^{\text{cont}})^+\right] =: P_0^{\text{BS}},$$
+$$P_0^{\text{CRR}}(n) = e^{-rT} \mathbb{E}^{\mathbb{Q}}\!\left[(K - S_n)^+\right] \xrightarrow[n \to \infty]{} e^{-rT} \mathbb{E}^{\mathbb{Q}}\!\left[(K - S_T^{\text{cont}})^+\right] =: P_0^{\text{BS}},$$
 
 where $S_T^{\text{cont}} := S_0 \exp\big((r - \sigma^2/2)T + \sigma\sqrt{T}\, \widetilde{Z}\big)$ is the log-normal limit.
 
@@ -178,7 +186,7 @@ $$C_0^{\text{CRR}}(n) - P_0^{\text{CRR}}(n) = S_0 - K e^{-rT}.$$
 
 The right-hand side is independent of $n$. Passing to the limit on the left and using the Put convergence:
 
-$$C_0^{\text{CRR}}(n) \;\xrightarrow[n \to \infty]{}\; P_0^{\text{BS}} + S_0 - K e^{-rT} =: C_0^{\text{BS}}.$$
+$$C_0^{\text{CRR}}(n) \xrightarrow[n \to \infty]{} P_0^{\text{BS}} + S_0 - K e^{-rT} =: C_0^{\text{BS}}.$$
 
 The second route is more elegant and avoids any analytic argument.
 
@@ -229,7 +237,7 @@ $$A = S_0\,e^{rT}\,\Phi(d_1).$$
 
 Combining $A - B$, multiplying by the discount factor $e^{-rT}$, and using $d_1 = d_2 + \sigma\sqrt{T}$:
 
-$$\boxed{\; C_0^{\text{BS}} = S_0\,\Phi(d_1) - K e^{-rT}\,\Phi(d_2), \qquad d_{1,2} = \frac{\log(S_0/K) + \big(r \pm \tfrac{\sigma^2}{2}\big)T}{\sigma\sqrt{T}} \;}$$
+$$\boxed{ C_0^{\text{BS}} = S_0\,\Phi(d_1) - K e^{-rT}\,\Phi(d_2), \qquad d_{1,2} = \frac{\log(S_0/K) + \big(r \pm \tfrac{\sigma^2}{2}\big)T}{\sigma\sqrt{T}} }$$
 
 The put follows by put-call parity:
 
