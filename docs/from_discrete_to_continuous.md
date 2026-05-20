@@ -53,7 +53,7 @@ The arbitrage-free condition $d < R < u$ ensures $q \in (0,1)$, so $\mathbb{Q}$ 
 
 For a claim with payoff $h(S_n)$ at maturity, the no-arbitrage price at time $0$ is
 
-$$V_0 = R^{-n} \, \mathbb{E}^{\mathbb{Q}}[h(S_n)] = e^{-rT} \, \mathbb{E}^{\mathbb{Q}}[h(S_n)],$$
+$$V_0 = R^{-n}  \mathbb{E}^{\mathbb{Q}}[h(S_n)] = e^{-rT}  \mathbb{E}^{\mathbb{Q}}[h(S_n)],$$
 
 by backward induction on the one-step pricing relation and the tower property of conditional expectations.
 
@@ -65,7 +65,7 @@ This is the formula we will study in the limit $n \to \infty$.
 
 To study the asymptotic distribution of $S_n$ as $n \to \infty$, we face two technical obstacles. First, $S_n = S_0 \prod_{k=1}^n \xi_k$ is a *product* of i.i.d. random variables, whereas standard limit theorems are stated for *sums*. Second, taking logarithms gives
 
-$$\log \frac{S_n}{S_0} = \sum_{k=1}^n \log \xi_k, \qquad \log \xi_k \in \{\sigma\sqrt{\Delta t},\, -\sigma\sqrt{\Delta t}\},$$
+$$\log \frac{S_n}{S_0} = \sum_{k=1}^n \log \xi_k, \qquad \log \xi_k \in \{\sigma\sqrt{\Delta t}, -\sigma\sqrt{\Delta t}\},$$
 
 but the summands shrink to zero as $\Delta t \to 0$, so the classical CLT does not apply to them as stated.
 
@@ -73,7 +73,7 @@ The remedy is to separate the *amplitude* of each increment (which depends on $n
 
 $$Z_k = \frac{\log \xi_k}{\sigma \sqrt{\Delta t}} \in \{-1, +1\},$$
 
-so that $\xi_k = e^{\sigma\sqrt{\Delta t}\,Z_k}$. As a deterministic transformation of i.i.d. variables, the sequence $(Z_k)$ remains i.i.d. under $\mathbb{Q}$, with
+so that $\xi_k = e^{\sigma\sqrt{\Delta t}Z_k}$. As a deterministic transformation of i.i.d. variables, the sequence $(Z_k)$ remains i.i.d. under $\mathbb{Q}$, with
 
 $$\mathbb{Q}(Z_k = +1) = q, \qquad \mathbb{Q}(Z_k = -1) = 1 - q.$$
 
@@ -102,7 +102,7 @@ $$R - d = \sigma\varepsilon + \left(r - \tfrac{1}{2}\sigma^2\right)\varepsilon^2
 
 so that
 
-$$q = \frac{1}{2} + \frac{1}{2}\cdot\frac{r - \sigma^2/2}{\sigma}\,\varepsilon + O(\varepsilon^2).$$
+$$q = \frac{1}{2} + \frac{1}{2}\cdot\frac{r - \sigma^2/2}{\sigma}\varepsilon + O(\varepsilon^2).$$
 
 The key feature is that $q \to 1/2$ as $\Delta t \to 0$, but the *speed* of this convergence — the $\varepsilon$-coefficient — encodes the drift $(r - \sigma^2/2)$.
 
@@ -110,7 +110,7 @@ The key feature is that $q \to 1/2$ as $\Delta t \to 0$, but the *speed* of this
 
 Since $Z_k \in \{-1, +1\}$ with $\mathbb{Q}(Z_k = 1) = q$:
 
-$$\mathbb{E}^{\mathbb{Q}}[Z_k] = 2q - 1 = \frac{r - \sigma^2/2}{\sigma}\,\sqrt{\Delta t} + O(\Delta t),$$
+$$\mathbb{E}^{\mathbb{Q}}[Z_k] = 2q - 1 = \frac{r - \sigma^2/2}{\sigma}\sqrt{\Delta t} + O(\Delta t),$$
 
 $$\mathrm{Var}^{\mathbb{Q}}(Z_k) = 1 - (2q - 1)^2 = 4q(1-q) = 1 + O(\Delta t).$$
 
@@ -118,7 +118,7 @@ $$\mathrm{Var}^{\mathbb{Q}}(Z_k) = 1 - (2q - 1)^2 = 4q(1-q) = 1 + O(\Delta t).$$
 
 By linearity of expectation and independence of the $(Z_k)$:
 
-$$\mathbb{E}^{\mathbb{Q}}[\widetilde{Z}_n] = \sqrt{n}\cdot\mathbb{E}^{\mathbb{Q}}[Z_1] = \sqrt{n\,\Delta t}\cdot\frac{r - \sigma^2/2}{\sigma} + O(\sqrt{n}\,\Delta t) \xrightarrow[n \to \infty]{} \frac{\sqrt{T}\,(r - \sigma^2/2)}{\sigma},$$
+$$\mathbb{E}^{\mathbb{Q}}[\widetilde{Z}_n] = \sqrt{n}\cdot\mathbb{E}^{\mathbb{Q}}[Z_1] = \sqrt{n\Delta t}\cdot\frac{r - \sigma^2/2}{\sigma} + O(\sqrt{n}\Delta t) \xrightarrow[n \to \infty]{} \frac{\sqrt{T}(r - \sigma^2/2)}{\sigma},$$
 
 $$\mathrm{Var}^{\mathbb{Q}}(\widetilde{Z}_n) = \mathrm{Var}^{\mathbb{Q}}(Z_1) \xrightarrow[n \to \infty]{} 1.$$
 
@@ -136,7 +136,7 @@ The right framework is that of a **triangular array** $\{Z_k^{(n)}\}_{1 \leq k \
 
 Let $\mu_n := \mathbb{E}^{\mathbb{Q}}[Z_k^{(n)}]$ and $s_n^2 := \sum_{k=1}^n \mathrm{Var}^{\mathbb{Q}}(Z_k^{(n)}) = n \cdot \mathrm{Var}^{\mathbb{Q}}(Z_1^{(n)})$. The Lindeberg-Feller theorem requires that for every $\delta > 0$,
 
-$$\frac{1}{s_n^2} \sum_{k=1}^n \mathbb{E}^{\mathbb{Q}}\left[ (Z_k^{(n)} - \mu_n)^2 \, \mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n} \right] \xrightarrow[n \to \infty]{} 0.$$
+$$\frac{1}{s_n^2} \sum_{k=1}^n \mathbb{E}^{\mathbb{Q}}\left[ (Z_k^{(n)} - \mu_n)^2  \mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n} \right] \xrightarrow[n \to \infty]{} 0.$$
 
 In our case the variables are *uniformly bounded*: $|Z_k^{(n)} - \mu_n| \leq 2$ for all $n, k$. Meanwhile $s_n \sim \sqrt{n} \to \infty$, so for any fixed $\delta > 0$ the indicator $\mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n}$ vanishes identically for $n$ large enough. The Lindeberg condition holds trivially.
 
@@ -149,14 +149,14 @@ $$\frac{1}{s_n}\sum_{k=1}^n \big(Z_k^{(n)} - \mu_n\big) \xrightarrow[n \to \inft
 
 Since $s_n^2 = n \cdot \mathrm{Var}^{\mathbb{Q}}(Z_1^{(n)}) \to n$, dividing by $\sqrt{n}$ instead of $s_n$ changes nothing in the limit. Combining with the asymptotics of Section 3:
 
-$$\widetilde{Z}_n \xrightarrow[n \to \infty]{(d)} \frac{\sqrt{T}\,(r - \sigma^2/2)}{\sigma} + \widetilde{Z}, \qquad \widetilde{Z} \sim \mathcal{N}(0, 1).$$
+$$\widetilde{Z}_n \xrightarrow[n \to \infty]{(d)} \frac{\sqrt{T}(r - \sigma^2/2)}{\sigma} + \widetilde{Z}, \qquad \widetilde{Z} \sim \mathcal{N}(0, 1).$$
 
 ### Limiting distribution of the log-price
 
 
 Recall that $\log(S_n / S_0) = \sigma\sqrt{T}\cdot \widetilde{Z}_n$. The linear transformation yields, under $\mathbb{Q}$:
 
-$$\log\frac{S_n}{S_0} \xrightarrow[n \to \infty]{(d)} \mathcal{N}\left( \big(r - \tfrac{\sigma^2}{2}\big)\,T, \sigma^2 T \right).$$
+$$\log\frac{S_n}{S_0} \xrightarrow[n \to \infty]{(d)} \mathcal{N}\left( \big(r - \tfrac{\sigma^2}{2}\big)T, \sigma^2 T \right).$$
 
 In the continuous-time limit, the underlying is log-normal under $\mathbb{Q}$ with drift $(r - \sigma^2/2)T$ and variance $\sigma^2 T$ — the parameters of the Black-Scholes log-price distribution.
 
@@ -169,11 +169,11 @@ By the definition of convergence in distribution (the *Portmanteau theorem*), $\
 
 ### The Put: bounded payoff, direct convergence
 
-The payoff of the European put, $(K - S_n)^+$, is bounded above by $K$. Writing $S_n = S_0 \exp(\sigma\sqrt{T} \, \widetilde{Z}_n)$, we have $(K - S_n)^+ = f(\widetilde{Z}_n)$ with $f(z) = (K - S_0 e^{\sigma \sqrt{T} z})^+$ continuous and bounded by $K$. Direct application:
+The payoff of the European put, $(K - S_n)^+$, is bounded above by $K$. Writing $S_n = S_0 \exp(\sigma\sqrt{T}  \widetilde{Z}_n)$, we have $(K - S_n)^+ = f(\widetilde{Z}_n)$ with $f(z) = (K - S_0 e^{\sigma \sqrt{T} z})^+$ continuous and bounded by $K$. Direct application:
 
 $$P_0^{\text{CRR}}(n) = e^{-rT} \mathbb{E}^{\mathbb{Q}}\left[(K - S_n)^+\right] \xrightarrow[n \to \infty]{} e^{-rT} \mathbb{E}^{\mathbb{Q}}\left[(K - S_T^{\text{cont}})^+\right] =: P_0^{\text{BS}},$$
 
-where $S_T^{\text{cont}} := S_0 \exp\big((r - \sigma^2/2)T + \sigma\sqrt{T}\, \widetilde{Z}\big)$ is the log-normal limit.
+where $S_T^{\text{cont}} := S_0 \exp\big((r - \sigma^2/2)T + \sigma\sqrt{T} \widetilde{Z}\big)$ is the log-normal limit.
 
 ### The Call: unbounded payoff, parity workaround
 
@@ -195,17 +195,17 @@ The second route is more elegant and avoids any analytic argument.
 
 It remains to compute the limiting expectation explicitly. Set
 
-$$Y := (r - \tfrac{\sigma^2}{2})T + \sigma\sqrt{T}\,\widetilde{Z}, \qquad \widetilde{Z} \sim \mathcal{N}(0, 1),$$
+$$Y := (r - \tfrac{\sigma^2}{2})T + \sigma\sqrt{T}\widetilde{Z}, \qquad \widetilde{Z} \sim \mathcal{N}(0, 1),$$
 
-so that $S_T^{\text{cont}} = S_0 e^Y$ is log-normal with $Y \sim \mathcal{N}\big((r - \sigma^2/2)T,\, \sigma^2 T\big)$. The call price reads
+so that $S_T^{\text{cont}} = S_0 e^Y$ is log-normal with $Y \sim \mathcal{N}\big((r - \sigma^2/2)T, \sigma^2 T\big)$. The call price reads
 
-$$C_0^{\text{BS}} = e^{-rT}\, \mathbb{E}^{\mathbb{Q}}\left[ (S_0 e^Y - K)^+ \right].$$
+$$C_0^{\text{BS}} = e^{-rT} \mathbb{E}^{\mathbb{Q}}\left[ (S_0 e^Y - K)^+ \right].$$
 
 ### Splitting on the exercise event
 
 The payoff $(S_0 e^Y - K)^+$ vanishes on $\{S_0 e^Y \leq K\}$. We split the indicator $\mathbf{1}\_{S_0 e^Y > K}$, which is equivalent to $\mathbf{1}\_{Y > \log(K/S_0)}$, and write
 
-$$\mathbb{E}^{\mathbb{Q}}\left[ (S_0 e^Y - K)^+ \right] = \underbrace{\mathbb{E}^{\mathbb{Q}}\left[ S_0 e^Y \,\mathbf{1}_{Y > \log(K/S_0)} \right]}_{=: A} - \underbrace{K \cdot \mathbb{Q}\left( Y > \log(K/S_0) \right)}_{=: B}.$$
+$$\mathbb{E}^{\mathbb{Q}}\left[ (S_0 e^Y - K)^+ \right] = \underbrace{\mathbb{E}^{\mathbb{Q}}\left[ S_0 e^Y \mathbf{1}_{Y > \log(K/S_0)} \right]}_{=: A} - \underbrace{K \cdot \mathbb{Q}\left( Y > \log(K/S_0) \right)}_{=: B}.$$
 
 The two terms $A$ and $B$ are now Gaussian integrals over a half-line, both computable in closed form.
 
@@ -223,25 +223,25 @@ $$B = K \Phi(d_2).$$
 
 We rewrite the integral defining $A$:
 
-$$A = \int_{-d_2}^{+\infty} S_0 e^{\mu + s z} \cdot \frac{1}{\sqrt{2\pi}} e^{-z^2/2} \, dz = \frac{S_0\,e^{\mu}}{\sqrt{2\pi}} \int_{-d_2}^{+\infty} e^{s z - z^2/2}\, dz.$$
+$$A = \int_{-d_2}^{+\infty} S_0 e^{\mu + s z} \cdot \frac{1}{\sqrt{2\pi}} e^{-z^2/2}  dz = \frac{S_0e^{\mu}}{\sqrt{2\pi}} \int_{-d_2}^{+\infty} e^{s z - z^2/2} dz.$$
 
 Completing the square: $sz - z^2/2 = s^2/2 - (z - s)^2/2$. Substituting and using $\mu + s^2/2 = rT$:
 
-$$A = S_0\,e^{\mu + s^2/2} \cdot \frac{1}{\sqrt{2\pi}} \int_{-d_2}^{+\infty} e^{-(z-s)^2/2}\, dz = S_0\,e^{rT} \cdot \mathbb{Q}(\widetilde{Z}' > -d_2 - s),$$
+$$A = S_0e^{\mu + s^2/2} \cdot \frac{1}{\sqrt{2\pi}} \int_{-d_2}^{+\infty} e^{-(z-s)^2/2} dz = S_0e^{rT} \cdot \mathbb{Q}(\widetilde{Z}' > -d_2 - s),$$
 
 where $\widetilde{Z}' := \widetilde{Z} - s \sim \mathcal{N}(0, 1)$. Setting $d_1 := d_2 + s = d_2 + \sigma\sqrt{T}$:
 
-$$A = S_0\,e^{rT}\,\Phi(d_1).$$
+$$A = S_0e^{rT}\Phi(d_1).$$
 
 ### Final formula
 
 Combining $A - B$, multiplying by the discount factor $e^{-rT}$, and using $d_1 = d_2 + \sigma\sqrt{T}$:
 
-$$\boxed{ C_0^{\text{BS}} = S_0\,\Phi(d_1) - K e^{-rT}\,\Phi(d_2), \qquad d_{1,2} = \frac{\log(S_0/K) + \big(r \pm \tfrac{\sigma^2}{2}\big)T}{\sigma\sqrt{T}} }$$
+$$\boxed{ C_0^{\text{BS}} = S_0\Phi(d_1) - K e^{-rT}\Phi(d_2), \qquad d_{1,2} = \frac{\log(S_0/K) + \big(r \pm \tfrac{\sigma^2}{2}\big)T}{\sigma\sqrt{T}} }$$
 
 The put follows by put-call parity:
 
-$$P_0^{\text{BS}} = C_0^{\text{BS}} - S_0 + K e^{-rT} = K e^{-rT}\,\Phi(-d_2) - S_0\,\Phi(-d_1).$$
+$$P_0^{\text{BS}} = C_0^{\text{BS}} - S_0 + K e^{-rT} = K e^{-rT}\Phi(-d_2) - S_0\Phi(-d_1).$$
 
 ---
 
@@ -259,13 +259,13 @@ For reference, the standard route via continuous-time stochastic calculus.
 
 Assume directly that under $\mathbb{Q}$, the underlying follows a geometric Brownian motion:
 
-$$dS_t = r S_t \, dt + \sigma S_t \, dW_t^{\mathbb{Q}}.$$
+$$dS_t = r S_t  dt + \sigma S_t  dW_t^{\mathbb{Q}}.$$
 
 By Itô's lemma applied to $f(s, t) = \log s$:
 
-$$d(\log S_t) = \left(r - \tfrac{\sigma^2}{2}\right) dt + \sigma \, dW_t^{\mathbb{Q}},$$
+$$d(\log S_t) = \left(r - \tfrac{\sigma^2}{2}\right) dt + \sigma  dW_t^{\mathbb{Q}},$$
 
-so $\log(S_T / S_0) \sim \mathcal{N}\big((r - \sigma^2/2) T, \, \sigma^2 T\big)$ under $\mathbb{Q}$, **recovering exactly the distribution obtained as the discrete limit in Section 4**. The pricing formula follows identically.
+so $\log(S_T / S_0) \sim \mathcal{N}\big((r - \sigma^2/2) T,  \sigma^2 T\big)$ under $\mathbb{Q}$, **recovering exactly the distribution obtained as the discrete limit in Section 4**. The pricing formula follows identically.
 
 Alternatively, $C(s, t) \in C^{2,1}$ satisfying the **Black-Scholes PDE**
 
