@@ -112,7 +112,7 @@ Since $Z_k \in \{-1, +1\}$ with $\mathbb{Q}(Z_k = 1) = q$:
 
 $$\mathbb{E}^{\mathbb{Q}}[Z_k] = 2q - 1 = \frac{r - \sigma^2/2}{\sigma}\,\sqrt{\Delta t} + O(\Delta t),$$
 
-$$\operatorname{Var}^{\mathbb{Q}}(Z_k) = 1 - (2q - 1)^2 = 4q(1-q) = 1 + O(\Delta t).$$
+$$\mathrm{Var}^{\mathbb{Q}}(Z_k) = 1 - (2q - 1)^2 = 4q(1-q) = 1 + O(\Delta t).$$
 
 ### Moments of $\widetilde{Z}_n$
 
@@ -120,7 +120,7 @@ By linearity of expectation and independence of the $(Z_k)$:
 
 $$\mathbb{E}^{\mathbb{Q}}[\widetilde{Z}_n] = \sqrt{n}\cdot\mathbb{E}^{\mathbb{Q}}[Z_1] = \sqrt{n\,\Delta t}\cdot\frac{r - \sigma^2/2}{\sigma} + O(\sqrt{n}\,\Delta t) \xrightarrow[n \to \infty]{} \frac{\sqrt{T}\,(r - \sigma^2/2)}{\sigma},$$
 
-$$\operatorname{Var}^{\mathbb{Q}}(\widetilde{Z}_n) = \operatorname{Var}^{\mathbb{Q}}(Z_1) \xrightarrow[n \to \infty]{} 1.$$
+$$\mathrm{Var}^{\mathbb{Q}}(\widetilde{Z}_n) = \mathrm{Var}^{\mathbb{Q}}(Z_1) \xrightarrow[n \to \infty]{} 1.$$
 
 The renormalised sum $\widetilde{Z}_n$ has, in the limit, an explicit non-trivial mean and unit variance — precisely the moments of the Gaussian distribution we expect to recover via a central limit theorem.
 
@@ -134,7 +134,7 @@ The right framework is that of a **triangular array** $\{Z_k^{(n)}\}_{1 \leq k \
 
 ### Verifying the Lindeberg condition
 
-Let $\mu_n := \mathbb{E}^{\mathbb{Q}}[Z_k^{(n)}]$ and $s_n^2 := \sum_{k=1}^n \operatorname{Var}^{\mathbb{Q}}(Z_k^{(n)}) = n \cdot \operatorname{Var}^{\mathbb{Q}}(Z_1^{(n)})$. The Lindeberg-Feller theorem requires that for every $\delta > 0$,
+Let $\mu_n := \mathbb{E}^{\mathbb{Q}}[Z_k^{(n)}]$ and $s_n^2 := \sum_{k=1}^n \mathrm{Var}^{\mathbb{Q}}(Z_k^{(n)}) = n \cdot \mathrm{Var}^{\mathbb{Q}}(Z_1^{(n)})$. The Lindeberg-Feller theorem requires that for every $\delta > 0$,
 
 $$\frac{1}{s_n^2} \sum_{k=1}^n \mathbb{E}^{\mathbb{Q}}\!\left[ (Z_k^{(n)} - \mu_n)^2 \, \mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n} \right] \xrightarrow[n \to \infty]{} 0.$$
 
@@ -147,7 +147,7 @@ Lindeberg-Feller then gives
 
 $$\frac{1}{s_n}\sum_{k=1}^n \big(Z_k^{(n)} - \mu_n\big) \xrightarrow[n \to \infty]{(d)} \mathcal{N}(0, 1).$$
 
-Since $s_n^2 = n \cdot \operatorname{Var}^{\mathbb{Q}}(Z_1^{(n)}) \to n$, dividing by $\sqrt{n}$ instead of $s_n$ changes nothing in the limit. Combining with the asymptotics of Section 3:
+Since $s_n^2 = n \cdot \mathrm{Var}^{\mathbb{Q}}(Z_1^{(n)}) \to n$, dividing by $\sqrt{n}$ instead of $s_n$ changes nothing in the limit. Combining with the asymptotics of Section 3:
 
 $$\widetilde{Z}_n \xrightarrow[n \to \infty]{(d)} \frac{\sqrt{T}\,(r - \sigma^2/2)}{\sigma} + \widetilde{Z}, \qquad \widetilde{Z} \sim \mathcal{N}(0, 1).$$
 
