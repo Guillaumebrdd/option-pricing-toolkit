@@ -203,7 +203,7 @@ $$C_0^{\text{BS}} = e^{-rT}\, \mathbb{E}^{\mathbb{Q}}\left[ (S_0 e^Y - K)^+ \rig
 
 ### Splitting on the exercise event
 
-The payoff $(S_0 e^Y - K)^+$ vanishes on $\{S_0 e^Y \leq K\}$. We split the indicator $\mathbf{1}_{S_0 e^Y > K}$, which is equivalent to $\mathbf{1}_{Y > \log(K/S_0)}$, and write
+The payoff $(S_0 e^Y - K)^+$ vanishes on $\{S_0 e^Y \leq K\}$. We split the indicator $\mathbf{1}\_{S_0 e^Y > K}$, which is equivalent to $\mathbf{1}\_{Y > \log(K/S_0)}$, and write
 
 $$\mathbb{E}^{\mathbb{Q}}\left[ (S_0 e^Y - K)^+ \right] = \underbrace{\mathbb{E}^{\mathbb{Q}}\left[ S_0 e^Y \,\mathbf{1}_{Y > \log(K/S_0)} \right]}_{=: A} - \underbrace{K \cdot \mathbb{Q}\left( Y > \log(K/S_0) \right)}_{=: B}.$$
 
@@ -219,7 +219,7 @@ By symmetry of the standard normal distribution, $\mathbb{Q}(\widetilde{Z} > -d_
 
 $$B = K \, \Phi(d_2).$$
 
-### Computing $A$ by Gaussian completing the square
+### Computing $A$ by completing the square
 
 We rewrite the integral defining $A$:
 
