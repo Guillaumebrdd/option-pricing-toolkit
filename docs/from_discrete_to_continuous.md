@@ -136,7 +136,7 @@ The right framework is that of a **triangular array** $\{Z_k^{(n)}\}_{1 \leq k \
 
 Let $\mu_n := \mathbb{E}^{\mathbb{Q}}[Z_k^{(n)}]$ and $s_n^2 := \sum_{k=1}^n \mathrm{Var}^{\mathbb{Q}}(Z_k^{(n)}) = n \cdot \mathrm{Var}^{\mathbb{Q}}(Z_1^{(n)})$. The Lindeberg-Feller theorem requires that for every $\delta > 0$,
 
-$$\frac{1}{s_n^2} \sum_{k=1}^n \mathbb{E}^{\mathbb{Q}}\!\left[ (Z_k^{(n)} - \mu_n)^2 \, \mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n} \right] \xrightarrow[n \to \infty]{} 0.$$
+$$\frac{1}{s_n^2} \sum_{k=1}^n \mathbb{E}^{\mathbb{Q}}\left[ (Z_k^{(n)} - \mu_n)^2 \, \mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n} \right] \xrightarrow[n \to \infty]{} 0.$$
 
 In our case the variables are *uniformly bounded*: $|Z_k^{(n)} - \mu_n| \leq 2$ for all $n, k$. Meanwhile $s_n \sim \sqrt{n} \to \infty$, so for any fixed $\delta > 0$ the indicator $\mathbf{1}_{|Z_k^{(n)} - \mu_n| > \delta s_n}$ vanishes identically for $n$ large enough. The Lindeberg condition holds trivially.
 
@@ -156,7 +156,7 @@ $$\widetilde{Z}_n \xrightarrow[n \to \infty]{(d)} \frac{\sqrt{T}\,(r - \sigma^2/
 
 Recall that $\log(S_n / S_0) = \sigma\sqrt{T}\cdot \widetilde{Z}_n$. The linear transformation yields, under $\mathbb{Q}$:
 
-$$\log\frac{S_n}{S_0} \xrightarrow[n \to \infty]{(d)} \mathcal{N}\!\left( \big(r - \tfrac{\sigma^2}{2}\big)\,T, \sigma^2 T \right).$$
+$$\log\frac{S_n}{S_0} \xrightarrow[n \to \infty]{(d)} \mathcal{N}\left( \big(r - \tfrac{\sigma^2}{2}\big)\,T, \sigma^2 T \right).$$
 
 In the continuous-time limit, the underlying is log-normal under $\mathbb{Q}$ with drift $(r - \sigma^2/2)T$ and variance $\sigma^2 T$ — the parameters of the Black-Scholes log-price distribution.
 
@@ -171,7 +171,7 @@ By the definition of convergence in distribution (the *Portmanteau theorem*), $\
 
 The payoff of the European put, $(K - S_n)^+$, is bounded above by $K$. Writing $S_n = S_0 \exp(\sigma\sqrt{T} \, \widetilde{Z}_n)$, we have $(K - S_n)^+ = f(\widetilde{Z}_n)$ with $f(z) = (K - S_0 e^{\sigma \sqrt{T} z})^+$ continuous and bounded by $K$. Direct application:
 
-$$P_0^{\text{CRR}}(n) = e^{-rT} \mathbb{E}^{\mathbb{Q}}\!\left[(K - S_n)^+\right] \xrightarrow[n \to \infty]{} e^{-rT} \mathbb{E}^{\mathbb{Q}}\!\left[(K - S_T^{\text{cont}})^+\right] =: P_0^{\text{BS}},$$
+$$P_0^{\text{CRR}}(n) = e^{-rT} \mathbb{E}^{\mathbb{Q}}\left[(K - S_n)^+\right] \xrightarrow[n \to \infty]{} e^{-rT} \mathbb{E}^{\mathbb{Q}}\left[(K - S_T^{\text{cont}})^+\right] =: P_0^{\text{BS}},$$
 
 where $S_T^{\text{cont}} := S_0 \exp\big((r - \sigma^2/2)T + \sigma\sqrt{T}\, \widetilde{Z}\big)$ is the log-normal limit.
 
@@ -199,13 +199,13 @@ $$Y := (r - \tfrac{\sigma^2}{2})T + \sigma\sqrt{T}\,\widetilde{Z}, \qquad \widet
 
 so that $S_T^{\text{cont}} = S_0 e^Y$ is log-normal with $Y \sim \mathcal{N}\big((r - \sigma^2/2)T,\, \sigma^2 T\big)$. The call price reads
 
-$$C_0^{\text{BS}} = e^{-rT}\, \mathbb{E}^{\mathbb{Q}}\!\left[ (S_0 e^Y - K)^+ \right].$$
+$$C_0^{\text{BS}} = e^{-rT}\, \mathbb{E}^{\mathbb{Q}}\left[ (S_0 e^Y - K)^+ \right].$$
 
 ### Splitting on the exercise event
 
 The payoff $(S_0 e^Y - K)^+$ vanishes on $\{S_0 e^Y \leq K\}$. We split the indicator $\mathbf{1}_{S_0 e^Y > K}$, which is equivalent to $\mathbf{1}_{Y > \log(K/S_0)}$, and write
 
-$$\mathbb{E}^{\mathbb{Q}}\!\left[ (S_0 e^Y - K)^+ \right] = \underbrace{\mathbb{E}^{\mathbb{Q}}\!\left[ S_0 e^Y \,\mathbf{1}_{Y > \log(K/S_0)} \right]}_{=: A} - \underbrace{K \cdot \mathbb{Q}\!\left( Y > \log(K/S_0) \right)}_{=: B}.$$
+$$\mathbb{E}^{\mathbb{Q}}\left[ (S_0 e^Y - K)^+ \right] = \underbrace{\mathbb{E}^{\mathbb{Q}}\left[ S_0 e^Y \,\mathbf{1}_{Y > \log(K/S_0)} \right]}_{=: A} - \underbrace{K \cdot \mathbb{Q}\left( Y > \log(K/S_0) \right)}_{=: B}.$$
 
 The two terms $A$ and $B$ are now Gaussian integrals over a half-line, both computable in closed form.
 
