@@ -23,7 +23,7 @@ and we equip $\Omega$ with the natural filtration
 
 $$\mathcal{F}_{k} = \sigma(\xi_1, \ldots, \xi_k) = \sigma(S_1, \ldots, S_k), \qquad \mathcal{F}_{0} = \{\emptyset, \Omega\}.$$
 
-In particular, $S_{k}$ is $\mathcal{F}_{k}$-measurable, while $\xi_{k+1}$ is independent of $\mathcal{F}_{k}$.
+In particular, $S\_{k}$ is $\mathcal{F}\_{k}$-measurable, while $\xi\_{k+1}$ is independent of $\mathcal{F}\_{k}$.
 
 ### Construction of the risk-neutral measure
 
