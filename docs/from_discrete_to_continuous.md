@@ -27,7 +27,7 @@ In particular, $S\_{k}$ is $\mathcal{F}\_{k}$-measurable, while $\xi\_{k+1}$ is 
 
 ### Construction of the risk-neutral measure
 
-We seek an equivalent probability measure $\mathbb{Q} \sim \mathbb{P}$ under which the discounted price $\widetilde{S}_{k} = R^{-k} S_{k}$ is a $(\mathcal{F}_{k})$-martingale, and under which the $(\xi_k)$ remain i.i.d. with $\mathbb{Q}(\xi_k = u) = q \in (0,1)$.
+We seek an equivalent probability measure $\mathbb{Q} \sim \mathbb{P}$ under which the discounted price $\widetilde{S}\_{k} = R^{-k} S\_{k}$ is a $(\mathcal{F}\_{k})$-martingale, and under which the $(\xi_k)$ remain i.i.d. with $\mathbb{Q}(\xi_k = u) = q \in (0,1)$.
 
 The martingale condition
 
