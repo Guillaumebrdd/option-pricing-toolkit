@@ -217,7 +217,7 @@ $$d_2 := \frac{\mu - \log(K/S_0)}{s} = \frac{\log(S_0/K) + (r - \sigma^2/2)T}{\s
 
 By symmetry of the standard normal distribution, $\mathbb{Q}(\widetilde{Z} > -d_2) = \Phi(d_2)$, so
 
-$$B = K \, \Phi(d_2).$$
+$$B = K \Phi(d_2).$$
 
 ### Computing $A$ by completing the square
 
