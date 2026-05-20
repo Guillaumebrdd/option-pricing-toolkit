@@ -37,7 +37,7 @@ rewrites, after multiplication by $R^{k+1}$, as
 
 $$\mathbb{E}^{\mathbb{Q}}[S_{k+1} \mid \mathcal{F}_{k}] = R \cdot S_{k}.$$
 
-Using the $\mathcal{F}_{k}$-measurability of $S_{k}$ (which factors out of the conditional expectation) and the independence of $\xi_{k+1}$ from $\mathcal{F}_{k}$ (which collapses the conditional expectation into a plain one):
+Using the $\mathcal{F}\_{k}$-measurability of $S\_{k}$ (which factors out of the conditional expectation) and the independence of $\xi\_{k+1}$ from $\mathcal{F}\_{k}$ (which collapses the conditional expectation into a plain one):
 
 $$\mathbb{E}^{\mathbb{Q}}[S_{k+1} \mid \mathcal{F}_{k}] = S_{k} \cdot \mathbb{E}^{\mathbb{Q}}[\xi_{k+1}] = S_{k} \cdot \big(q u + (1-q) d\big).$$
 
